@@ -84,7 +84,7 @@ useEffect(() => {
       </div>
       <div className='create mb-3 mx-4' >
    
-          <input style={{width:"30%",position:"absolute",left:"35%"}} type="search" placeholder="Search here..." className='form-control' onChange={inputHandler} />
+          <input style={{width:"30%",position:"absolute",left:"35%"}} type="search" placeholder="Search..." className='form-control' onChange={inputHandler} />
        
          {/* for logout  */}
           <span><Welcome/></span>
