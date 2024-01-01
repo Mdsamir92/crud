@@ -1,0 +1,49 @@
+body{
+ 
+  scroll-behavior: smooth;
+}
+.form-container {
+background: rgba(218, 38, 173, 0.50);
+/* box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.30); */
+box-shadow: -10px 10px 10px 5px grey;
+backdrop-filter: blur(20px);
+padding: 40px 50px;
+-webkit-backdrop-filter: blur(8px);
+border-radius: 25px;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+
+}
+
+label{
+  font-weight: 500;
+}
+input[type="checkbox"]{
+  cursor: pointer;
+ 
+}
+
+
+@media(max-width:768px) {
+.form-container {
+    background: rgba(231, 170, 170, 0.50);
+    box-shadow: -10px 10px 10px 5px grey;
+    backdrop-filter: blur(20px);
+    padding: 60px 80px;
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 25px;
+    width: 40%;
+  
+}
+tbody{
+  font-size: 12px;
+}
+th{
+  font-size: 15px;
+  padding: 0px 5px;
+}
+
+
+}
