@@ -4,7 +4,6 @@ import { Link,useNavigate } from 'react-router-dom';
 import Welcome from '../Welcome';
 import { toast } from "react-toastify"
 
-
 function Read() {
 
   const [data, setData] = useState([]); // for display and read our data
@@ -82,23 +81,25 @@ useEffect(() => {
         />
 
       </div>
+
+     
       <div className='create mb-3 mx-4' >
    
-          <input style={{width:"30%",position:"absolute",left:"35%"}} type="search" placeholder="Search..." className='form-control' onChange={inputHandler} />
        
          {/* for logout  */}
           <span><Welcome/></span>
-      
+    
           <Link to="/home">
-          <button style={{background:"black",color:"white",position:"absolute",top:"13%",left:"80%"}} className='btn '>Create</button> 
+          <button style={{background:"black",color:"white",position:"absolute",top:"14%",left:"75%"}} className='btn '>Create</button> 
         </Link>
-      
+
         </div>
 
 
       <div className='d-flex justify-content-between  mx-4'>
    
-        <h3>Read Data  </h3>
+        <h4>Read Data  </h4>
+        <input className="search-input " style={{width:"30%",position:"absolute",top:"13%",left:"38%"}} type="search" placeholder="Search ..."  onChange={inputHandler} />
 
       </div>
       <div className=' col-md-10 col-8 mx-3'>
