@@ -66,7 +66,7 @@ function Create() {
             <input type="name" className="form-control" placeholder='Enter name...' onChange={(e) => setName(e.target.value)}  required/> 
           </div>
           <div className="mb-3">
-            <label className="form-label"  >Email address</label>
+            <label className="form-label"  >Email</label>
             <input type="email" className="form-control" placeholder='Enter email...' onChange={(e) => setEmail(e.target.value)} required  />
           </div>
           <div className="mb-3" >
