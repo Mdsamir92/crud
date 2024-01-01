@@ -72,14 +72,9 @@ label {
 
 @media(max-width:768px) {
 
-  /* .form-container {
-    padding: 50px 80px;
-    width: 40%;
-
-  } */
 
   input {
-    width: 85%;
+    width: 100%;
   }
 
   .social-icons i{
