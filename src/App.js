@@ -17,29 +17,7 @@ import Upload from "./components/Upload";
 
 function App() {
 
-  const token = localStorage.getItem('token')
 
-  const [tokenData,setTokenData] = useState({
-    token
-  })
-  
-    useEffect(()=>{
-      const checkToken = async()=>{
-        try{
-          const res = await axios.post("https://login-register-form-go9w.onrender.com//token",
-          tokenData)
-         console.log(res)
-         if(res.data){
-          localStorage.removeItem('token')
-          localStorage.removeItem('username')
-         }
-        }catch(error){
-         console.log(error)
-        }
-  
-      }
-      checkToken()
-    },[])
   
   return (
     <div>
