@@ -44,9 +44,12 @@ input[type="checkbox"]{
 }
 
  .card button{
-  width: fit-content;
+
   font-size: 13px;
  
+}
+ .card{
+  padding: 10px;
 }
  
 tbody{
