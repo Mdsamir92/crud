@@ -11,7 +11,7 @@ function Upload() {
         const formData = new FormData()
         formData.append("file", file)
 
-        axios.post("// https://sam-crud.onrender.com/api/upload", formData)
+        axios.post(" https://sam-crud.onrender.com/api/upload", formData)
             .then((res) => {
                 console.log(res.data);
             //    toast.success("Upload successfully 😍 ");
