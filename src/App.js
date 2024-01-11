@@ -11,6 +11,9 @@ import LoginForm from "./components/login/Login";
 import { ToastContainer} from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import Upload from "./components/Upload";
+
+
 
 function App() {
 
@@ -47,6 +50,7 @@ function App() {
           <Route exact path="/update/:id" element={<Update />}> </Route>
           <Route  path="/signup" element={<Signup/>}> </Route>
           <Route  path="/" element={<LoginForm/>}> </Route>  
+       <Route  path="/upload" element={<Upload/>}> </Route>  
        </Routes>
       </BrowserRouter>
       <ToastContainer position='top-right' theme="colored" 
