@@ -7,7 +7,7 @@ function GetImg() {
 
   const getData = async () => {
     try {
-      let res = await axios.get("http://localhost:5000/api/getimg");
+      let res = await axios.get("https://sam-crud.onrender.com/api/getimg");
       setImg(res.data.data)
 
     } catch (error) {
