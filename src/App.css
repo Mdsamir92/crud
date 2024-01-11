@@ -42,6 +42,13 @@ input[type="checkbox"]{
   margin-top: 10px;
   font-size: 13px;
 }
+
+ .card button{
+  width: fit-content;
+  font-size: 13px;
+ 
+}
+ 
 tbody{
   font-size: 12px;
 }
