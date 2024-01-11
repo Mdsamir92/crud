@@ -55,7 +55,7 @@ function Create() {
       <div className='d-flex justify-content-between m-3'>
         <h2>Create Data</h2>
         <Link to="/read">
-          <button className='btn btn-warning'>Show Data</button>
+          <button className='btn btn-warning'>Read Data</button>
         </Link>
       </div>
 
