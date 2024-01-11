@@ -32,7 +32,7 @@ function GetImg() {
 
 
   return (
-    <div className='container row d-flex justify-content-center mx-3 align-items-center'>
+    <div className='container row d-flex justify-content-center  align-items-center'>
 
 
         {img.map((eachData, i) => {
