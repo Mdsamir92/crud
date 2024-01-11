@@ -17,7 +17,7 @@ function GetImg() {
   }
 
   function handleDelete(id) {
-    axios.delete(`http://localhost:5000/api/del/${id}`)
+    axios.delete(`https://sam-crud.onrender.com/api/del/${id}`)
       .then(() => {
         toast.success("Delete successfully...")
         getData();
@@ -40,7 +40,7 @@ function GetImg() {
           return(
             
             <div key={i} className="card card_style" style={{width:"15rem",height:"15rem",padding:"10px",margin:"20px 15px"}}>
-                <img height={200} src={`http://localhost:5000/img/${eachData.image}`} alt="..." />
+                <img height={200} src={`https://sam-crud.onrender.com/img/${eachData.image}`} alt="..." />
                 <button className='btn btn-warning' onClick={() => handleDelete(eachData._id)}>Delete</button>
 
             </div>  
