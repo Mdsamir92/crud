@@ -37,6 +37,11 @@ input[type="checkbox"]{
     width: 40%;
   
 }
+
+ .home-btn button{
+  margin-top: 10px;
+  font-size: 13px;
+}
 tbody{
   font-size: 12px;
 }
