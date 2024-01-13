@@ -39,7 +39,7 @@ function GetImg() {
 
           return(
             
-            <div key={i} className="card card_style" style={{width:"15rem",height:"16rem",padding:"15px",margin:"20px 15px"}}>
+            <div key={i} className="card card_style" style={{width:"16rem",height:"17rem",padding:"10px",margin:"20px 15px"}}>
                 <img height={200} src={`https://sam-crud.onrender.com/img/${eachData.image}`} alt="..." />
                 <button className='btn btn-warning' onClick={() => handleDelete(eachData._id)}>Delete</button>
 
