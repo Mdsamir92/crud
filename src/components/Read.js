@@ -3,21 +3,29 @@ import React, { useState, useEffect } from 'react'
 import { Link,useNavigate } from 'react-router-dom';
 import Welcome from '../Welcome';
 import { toast } from "react-toastify"
+import Loading from "./Loading";
+
+
+
 
 function Read() {
 
   const [data, setData] = useState([]); // for display and read our data
   const [input, setInput] = useState(""); //for search name
   const [tabledark, setTabledark] = useState(); //for dark mode
-
+   const [loading,setLoading] = useState(true)// for loading api
+  
 
   const navigate = useNavigate();
 
   const getData = async () => {
     try {
+  
       let res = await fetch("https://sam-crud.onrender.com/api/read");
       res = await res.json();
       setData(res.data)
+      setLoading(false)
+    
 
     } catch (error) {
       console.log(error)
@@ -25,7 +33,6 @@ function Read() {
 
   }
 
-   
 
 useEffect(()=>{
 
@@ -70,6 +77,7 @@ useEffect(() => {
 
   return (
     <div>
+      
       {/* Darkmode */}
       <div className='for-check form-switch m-3'>
         <input className='form-check-input' type="checkbox"
@@ -84,14 +92,13 @@ useEffect(() => {
 
      
       <div className='create mb-3 mx-4' >
-   
        
          {/* for logout  */}
           <span><Welcome/></span>
     
           <Link to="/home">
           <button style={{background:"black",color:"white",position:"absolute",top:"14%",left:"75%"}} className='btn '>Create</button> 
-        </Link>
+          </Link>
 
         </div>
 
@@ -99,10 +106,17 @@ useEffect(() => {
       <div className='d-flex justify-content-between  mx-4'>
    
         <h4>Read Data  </h4>
-        <input className="search-input " style={{width:"30%",position:"absolute",top:"13%",left:"38%"}} type="search" placeholder="Search ..."  onChange={inputHandler} />
-
+        <input  style={{width:"30%",position:"absolute",top:"13%",left:"38%"}} type="search" onChange={inputHandler
+        }
+        placeholder="Search ..."   />
+        
       </div>
-      <div className=' col-md-10 col-8 mx-3'>
+
+           <div className=' text-center m-3'>
+          <Loading show={loading} />
+          </div>
+
+      <div className=' col-md-10 col-8 mx-3 '>
         <table className={`table ${tabledark}`} >
           <thead>
             <tr>
@@ -114,7 +128,9 @@ useEffect(() => {
               <th scope="col">Delete</th>
             </tr>
           </thead>
+        
 
+         
           {/* for search name email and number */}
 
           {data.filter((el) => {
