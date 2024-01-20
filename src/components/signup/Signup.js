@@ -25,9 +25,6 @@ const navigate = useNavigate("");
   else if(name.length<3){
      toast.error("Name requires a minimum of 3 characters");
      return;
-   }else if (email.length < 13) { 
-     toast.error("Enter a valid email address");
-     return;
    }
    else if (password.length < 5) {
      toast.error("Password requires a minimum of 5 characters");
