@@ -56,10 +56,10 @@ function LoginForm() {
       </div>
       <form>
         <label>Email:</label> <br />
-        <input type="text" value={email} className="form-control" placeholder="enter email" onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" value={email} placeholder="enter email" onChange={(e) => setEmail(e.target.value)} />
         <br />
         <label>Password:</label> <br />
-        <input type="password" value={password} className="form-control" placeholder="enter password" onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" value={password} placeholder="enter password" onChange={(e) => setPassword(e.target.value)} />
         <br />
         <button type="submit" onClick={handleSubmit} className='login-btn'>Login</button>
        
