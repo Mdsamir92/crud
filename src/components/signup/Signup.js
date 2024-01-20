@@ -75,13 +75,13 @@ const navigate = useNavigate("");
       </div>
       <form>
         <label>Name:</label> <br />
-        <input type="text" value={name} placeholder="enter name" onChange={(e) => setName(e.target.value)} />
+        <input type="text" value={name} className="form-control" placeholder="enter name" onChange={(e) => setName(e.target.value)} />
         <br />
         <label>Email:</label> <br />
-        <input type="email" value={email} placeholder="enter email" onChange={(e) => setEmail(e.target.value)} />
+        <input type="email" value={email} className="form-control" placeholder="enter email" onChange={(e) => setEmail(e.target.value)} />
         <br />
         <label>Password:</label> <br />
-        <input type="password" value={password} placeholder="enter password" onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" value={password} className="form-control" placeholder="enter password" onChange={(e) => setPassword(e.target.value)} />
         <br />
         {/* <p style={{ color: "red" }}>{error && error}</p> */}
        
