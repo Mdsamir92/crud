@@ -69,7 +69,7 @@ function Update() {
           </div>
           <div className="mb-3">
             <label className="form-label">Phone</label>
-            <input type="number" className="form-control"  placeholder='enter number...' value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <input type="number" className="form-control" maxLength="10"   placeholder='enter number...' value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
           <div className="mb-3 form-check">
             <input type="checkbox" className="form-check-input" />
