@@ -76,7 +76,7 @@ function Create() {
           </div>
           <div className="mb-3" >
             <label className="form-label">Phone </label>
-            <input type="number" className="form-control" placeholder='Enter number...' onChange={(e) => setPhone(e.target.value)} required  />
+            <input type="number" className="form-control" maxLength="10"  placeholder='Enter number...' onChange={(e) => setPhone(e.target.value)} required  />
           </div>
           <div className="mb-3 form-check">
             <input type="checkbox" className="form-check-input" />
