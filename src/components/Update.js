@@ -61,20 +61,15 @@ function Update() {
         <form >
           <div className="mb-3">
             <label className="form-label">Name</label>
-            <input type="text" className="form-control" placeholder='enter name...' value={name} onChange={(e) => setName(e.target.value)} />
+            <input type="text"  placeholder='enter name...' value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="mb-3">
             <label className="form-label">Email address</label>
-            <input type="email" className="form-control" placeholder='enter email...' value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="email"  placeholder='enter email...' value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="mb-3">
             <label className="form-label">Phone</label>
-            <input type="number" className="form-control" maxLength="10"   placeholder='enter number...' value={phone} onChange={(e) => setPhone(e.target.value)} />
-          </div>
-          <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" />
-            <label className="form-check-label">Check me out</label>
-
+            <input type="number"  placeholder='enter number...' value={phone} onChange={(e) => setPhone(e.target.value)} />
           </div>
           <button type="submit" className="btn btn-warning mx-2" onClick={handleSubmit} >Update</button>
           <Link to="/read">
