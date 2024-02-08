@@ -12,9 +12,8 @@ body{
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 40px;
-  padding: 30px 40px;
+  padding: 22px 40px;
   width: 50%;
-
   border: 5px solid rgb(255, 255, 255);
   box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 30px 30px -20px;
  
