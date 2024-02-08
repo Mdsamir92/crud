@@ -52,9 +52,10 @@ function Create() {
   return (
     <div>
 
-      <div className='home-btn  d-flex justify-content-between m-3'>
-        <h2>Create Data</h2>
-           <div>
+      <div className='home-btn d-flex justify-content-between m-3'>
+
+
+        <div >
         <Link to="/read">
           <button className='btn btn-warning mx-3'>Read Data</button>
         </Link>
@@ -62,27 +63,26 @@ function Create() {
           <button className='btn btn-warning'>Upload Image </button>
         </Link>
         </div>
+     
       </div>
 
        <div className='form-container'>
+       <h2>Create Data</h2>
         <form >
           <div className="mb-3">
-            <label className="form-label">Name</label>
-            <input type="name" className="form-control" placeholder='Enter name...' onChange={(e) => setName(e.target.value)}  required/> 
+            <label className="form-label">Name</label> <br/>
+            <input type="name"  placeholder='Enter name...' onChange={(e) => setName(e.target.value)}  required/> 
           </div>
           <div className="mb-3">
-            <label className="form-label"  >Email</label>
-            <input type="email" className="form-control" placeholder='Enter email...' onChange={(e) => setEmail(e.target.value)} required  />
+            <label className="form-label"  >Email address</label>
+            <input type="email"  placeholder='Enter email...' onChange={(e) => setEmail(e.target.value)} required  />
           </div>
           <div className="mb-3" >
-            <label className="form-label">Phone </label>
-            <input type="number" className="form-control" maxLength="10"  placeholder='Enter number...' onChange={(e) => setPhone(e.target.value)} required  />
+            <label className="form-label">Phone </label> <br/>
+            <input type="number"  placeholder='Enter number...' onChange={(e) => setPhone(e.target.value)} required  />
           </div>
-          <div className="mb-3 form-check">
-            <input type="checkbox" className="form-check-input" />
-            <label className="form-check-label">Check me out</label>
-          </div>
-          <button type="submit" className="btn btn-warning" onClick={handleSubmit}>Submit</button>
+     
+          <button type="submit" className='reg-btn' onClick={handleSubmit}>Submit</button>
         </form>
        
       </div>
