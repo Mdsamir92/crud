@@ -55,9 +55,9 @@ function Update() {
 
   return (
     <div>
-      <h2>Update Data</h2>
+   
       <div className='form-container'>
-
+         <h2>Update Data</h2>
         <form >
           <div className="mb-3">
             <label className="form-label">Name</label>
