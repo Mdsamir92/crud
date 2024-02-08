@@ -52,12 +52,12 @@ function Create() {
   return (
     <div>
 
-      <div className='home-btn d-flex justify-content-between m-2'>
+      <div className='home-btn d-flex justify-content-between m-2  mb-2'>
 
 
         <div >
         <Link to="/read">
-          <button className='btn btn-warning mx-3 mb-2'>Read Data</button>
+          <button className='btn btn-warning mx-3'>Read Data</button>
         </Link>
         <Link to="/upload">
           <button className='btn btn-warning'>Upload Image </button>
