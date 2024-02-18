@@ -32,7 +32,6 @@ function Create() {
     }
     else{
       Swal.fire({icon:"success",title:"wow",text:"submit successfully..."})
-    
     }
  
     axios.post(
@@ -46,13 +45,12 @@ function Create() {
       navigate("/read");
     });
 
-
   }
 
   return (
     <div>
 
-      <div className='home-btn d-flex justify-content-between m-2  mb-2'>
+      <div className='home-btn d-flex justify-content-between m-3'>
 
 
         <div >
@@ -69,15 +67,15 @@ function Create() {
        <div className='form-container'>
        <h2>Create Data</h2>
         <form >
-          <div className="mb-3">
+          <div>
             <label className="form-label">Name</label> <br/>
             <input type="name"  placeholder='Enter name...' onChange={(e) => setName(e.target.value)}  required/> 
           </div>
-          <div className="mb-3">
+          <div>
             <label className="form-label"  >Email address</label>
             <input type="email"  placeholder='Enter email...' onChange={(e) => setEmail(e.target.value)} required  />
           </div>
-          <div className="mb-3" >
+          <div>
             <label className="form-label">Phone </label> <br/>
             <input type="number"  placeholder='Enter number...' onChange={(e) => setPhone(e.target.value)} required  />
           </div>
