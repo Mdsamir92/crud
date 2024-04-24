@@ -40,6 +40,24 @@ function Update() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+        if (!name || !email || !phone) {
+      Swal.fire({ icon: "error", title: "Oops", text: "please fill data..." })
+      return;
+    } else if (name.length < 3) {
+      Swal.fire({ icon: "error", title: "Oops", text: "Name requires a minimum of 3 characters" });
+      return;
+    } else if (email.length < 13) {
+      Swal.fire({ icon: "error", title: "Oops", text: "Enter a valid email address" });
+      return;
+    }
+    else if (phone.length < 10) {
+      Swal.fire({ icon: "error", title: "Oops", text: "number requires a minimum of 10  digits" });
+      return;
+    }
+    else {
+      Swal.fire({ icon: "success", title: "wow", text: "submit successfully..." })
+
+    }
     await axios.put(
       `https://sam-crud.onrender.com/api/update/${id}`,
       {
@@ -60,7 +78,7 @@ function Update() {
          <h2>Update Data</h2>
         <form >
           <div className="mb-3">
-            <label className="form-label">Name</label>
+            <label className="form-label">Name</label> <br/>
             <input type="text"  placeholder='enter name...' value={name} onChange={(e) => setName(e.target.value)} />
           </div>
           <div className="mb-3">
@@ -68,8 +86,8 @@ function Update() {
             <input type="email"  placeholder='enter email...' value={email} onChange={(e) => setEmail(e.target.value)} />
           </div>
           <div className="mb-3">
-            <label className="form-label">Phone</label>
-            <input type="number"  placeholder='enter number...' value={phone} onChange={(e) => setPhone(e.target.value)} />
+            <label className="form-label">Phone</label><br/>
+           <input type="number" placeholder='Enter number...' value={phone} onChange={(e) => setPhone(e.target.value.slice(0,10))} required />
           </div>
           <button type="submit" className="btn btn-warning mx-2" onClick={handleSubmit} >Update</button>
           <Link to="/read">
