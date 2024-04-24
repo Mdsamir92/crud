@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { toast } from "react-toastify";
-
+import Swal from "sweetalert2"
 
 function Update() {
   const { id } = useParams();
