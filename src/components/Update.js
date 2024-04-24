@@ -55,7 +55,7 @@ function Update() {
       return;
     }
     else {
-      Swal.fire({ icon: "success", title: "wow", text: "submit successfully..." })
+      Swal.fire({ icon: "success", title: "wow", text: "Update successfully..." })
 
     }
     await axios.put(
