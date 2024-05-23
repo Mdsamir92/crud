@@ -10,13 +10,15 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [error, setError] = useState("");
-
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+       // validate email using regex 
+   let emailRegex = /^[A-Za-z0-9]+(?:[.%_+][A-Za-z0-9]+)*@[A-Za-z]+\.[A-Za-z]{3}$/.test(email);
+
 
     if (!name || !email || !password) {
       toast.error("Enter valid name, email & password 🙁");
@@ -25,7 +27,7 @@ function Signup() {
     else if (name.length < 3) {
       toast.error("Name requires a minimum of 3 characters");
       return;
-    } else if (email.length < 13) {
+    } else if (email.length < 13 || !emailRegex) {
       toast.error("Enter a valid email address");
       return;
     }
@@ -35,7 +37,7 @@ function Signup() {
     }
 
 
-
+    setLoading(true)
     axios.post("https://login-register-form-go9w.onrender.com/register",
       { name, email, password }
 
@@ -45,27 +47,15 @@ function Signup() {
     })
 
       .catch(() => {
-
-        if (!name || !email || !password) {
-          toast.error("Enter valid name, email & password 🙁");
-          return;
-        }
-
-        else {
-          toast.error("Email already registered 🙁");
-          return;
-        }
-      })
-
-
+      toast.error("Email already registered 🙁");
 
   }
 
 
   return (
     <div className='form-container'>
-      <h2>Register</h2>
-
+   
+      <h2>  {loading ? "processing" : "Register🖥"}</h2>
 
       <form>
         <label>Name:</label> <br />
@@ -81,7 +71,7 @@ function Signup() {
         <button type="submit" onClick={handleSubmit} className='reg-btn'>Register</button>
 
       </form>
-      <br />
+  
       <Link to="/">Login with existing account</Link>
     </div>
   )
