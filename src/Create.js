@@ -15,6 +15,9 @@ function Create() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
+    // validate email using regex 
+    let emailRegex = /^[A-Za-z0-9]+(?:[.%_+][A-Za-z0-9]+)*@[A-Za-z0-9]+\.[A-Za-z]{3}$/.test(email);
 
     if (!name || !email || !phone) {
       Swal.fire({ icon: "error", title: "Oops", text: "please fill data..." })
@@ -22,10 +25,10 @@ function Create() {
     } else if (name.length < 3) {
       Swal.fire({ icon: "error", title: "Oops", text: "Name requires a minimum of 3 characters" });
       return;
-    } else if (email.length < 13) {
+    } else if (email.length < 13 || !emailRegex) {
       Swal.fire({ icon: "error", title: "Oops", text: "Enter a valid email address" });
       return;
-    }
+    } 
     else if (phone.length < 10) {
       Swal.fire({ icon: "error", title: "Oops", text: "number requires a minimum of 10  digits" });
       return;
@@ -50,7 +53,14 @@ function Create() {
 
 
   }
+  // const handleemail = (e) => {
+  //   let value = e.target.value;
+  
+  //   setEmail(value)
 
+  //   const isValidemail = /^\d{10}$/g.test(value);
+  //   setisValid(isValidemail)
+  // }
   return (
     <div>
 
@@ -78,12 +88,19 @@ function Create() {
           <div>
             <label className="form-label"  >Email address</label>
             <input type="email" placeholder='Enter email...' onChange={(e) => setEmail(e.target.value)} required />
+            {/* <input type="email" placeholder='Enter email...' value={email} onChange={handleemail} required /> */}
           </div>
           <div>
             <label className="form-label">Phone </label> <br />
-             <input type="number" placeholder='Enter number...' value={phone} onChange={(e) =>setPhone(e.target.value.slice(0,10))} required />
+            <input type="number" placeholder='Enter number...' value={phone} onChange={(e) =>setPhone(e.target.value.slice(0,10))} required />
           </div>
-    
+          {/* {
+            isValid ? (
+              <p style={{color:"green"}}>Valid mobile number</p>
+            ) : (
+              <p style={{color:"red"}}>Invalid phone number</p>
+            )
+          } */}
 
           <button type="submit" className='reg-btn' onClick={handleSubmit}>Submit</button>
         </form>
