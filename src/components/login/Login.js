@@ -9,7 +9,7 @@ function LoginForm() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [error,setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate("");
 
@@ -18,6 +18,7 @@ function LoginForm() {
 
     
     try {
+      setLoading(true)
       const res = await axios.post("https://login-register-form-go9w.onrender.com/login",
         { email, password },)
 
@@ -45,15 +46,16 @@ function LoginForm() {
 
   return (
     <div className='form-container '>
-      <h2>Login💻</h2>
+
+      <h2>  {loading ? "processing" : "Login💻"}</h2>
 
 
       <form>
         <label>Email:</label> <br />
-        <input type="text" value={email} required  placeholder="enter email💌" onChange={(e) => setEmail(e.target.value)} />
+        <input type="text" value={email} required  placeholder="enter email" onChange={(e) => setEmail(e.target.value)} />
         <br />
         <label>Password:</label> <br />
-        <input type="password" value={password} required placeholder="enter password🔐" onChange={(e) => setPassword(e.target.value)} />
+        <input type="password" value={password} required placeholder="enter password" onChange={(e) => setPassword(e.target.value)} />
         <br />
         <input class="checkbox" type="checkbox" required /> Keep me signed in 
         <button type="submit" onClick={handleSubmit} className='login-btn'>Login</button>
