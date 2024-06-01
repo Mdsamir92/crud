@@ -21,14 +21,13 @@ function Update() {
     setPhone(localStorage.getItem("phone"));
   }, []);
 
-
-
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-  // validate email using regex 
-  let emailRegex = /^[A-Za-z0-9]+(?:[.%_+][A-Za-z0-9]+)*@[A-Za-z0-9]+\.[A-Za-z]{3}$/.test(email);
+  // validate email and phone using regex 
+    let emailRegex = /^[A-Za-z]+[\d]+[@]+[gmail]+[.]com$/.test(email);
+    
+    let phoneRegex = /^[6-9][\d]{9}$/.test(phone);
 
   if (!name || !email || !phone) {
     Swal.fire({ icon: "error", title: "Oops", text: "please fill data..." })
@@ -36,18 +35,18 @@ function Update() {
   } else if (name.length < 3) {
     Swal.fire({ icon: "error", title: "Oops", text: "Name requires a minimum of 3 characters" });
     return;
-  } else if (email.length < 13 || !emailRegex) {
+  } else if (email.length < 14 || !emailRegex) {
     Swal.fire({ icon: "error", title: "Oops", text: "Enter a valid email address" });
     return;
   } 
-    else if (phone.length < 10) {
+    else if (!phoneRegex) {
       Swal.fire({ icon: "error", title: "Oops", text: "number requires a minimum of 10  digits" });
       return;
     }
     else {
       Swal.fire({ icon: "success", title: "wow", text: "Update successfully..." })
-
     }
+
     await axios.put(
       `https://sam-crud.onrender.com/api/update/${id}`,
       {
