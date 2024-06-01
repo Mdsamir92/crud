@@ -76,22 +76,13 @@ function Create() {
             <input type="name" placeholder='Enter name...' onChange={(e) => setName(e.target.value)} required />
           </div>
           <div>
-            <label className="form-label"  >Email address</label>
+            <label className="form-label">Email address</label>
             <input type="email" placeholder='Enter email...' onChange={(e) => setEmail(e.target.value)} required />
-            {/* <input type="email" placeholder='Enter email...' value={email} onChange={handleemail} required /> */}
           </div>
           <div>
             <label className="form-label">Phone </label> <br />
             <input type="number" placeholder='Enter number...' value={phone} onChange={(e) =>setPhone(e.target.value.slice(0,10))} required />
           </div>
-          {/* {
-            isValid ? (
-              <p style={{color:"green"}}>Valid mobile number</p>
-            ) : (
-              <p style={{color:"red"}}>Invalid phone number</p>
-            )
-          } */}
-
           <button type="submit" className='reg-btn' onClick={handleSubmit}>Submit</button>
         </form>
 
