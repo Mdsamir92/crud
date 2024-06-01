@@ -11,13 +11,14 @@ function Create() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  //  const [isValid,setisValid] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // validate email using regex 
-    let emailRegex = /^[A-Za-z0-9]+(?:[.%_+][A-Za-z0-9]+)*@[A-Za-z0-9]+\.[A-Za-z]{3}$/.test(email);
+    // validate email and phone using regex 
+    let emailRegex = /^[A-Za-z]+[\d]+[@]+[gmail]+[.]com$/.test(email);
+
+    let phoneRegex = /^[6-9][\d]{9}$/.test(phone);
 
     if (!name || !email || !phone) {
       Swal.fire({ icon: "error", title: "Oops", text: "please fill data..." })
@@ -25,18 +26,19 @@ function Create() {
     } else if (name.length < 3) {
       Swal.fire({ icon: "error", title: "Oops", text: "Name requires a minimum of 3 characters" });
       return;
-    } else if (email.length < 13 || !emailRegex) {
+    } else if (email.length < 15 || !emailRegex) {
       Swal.fire({ icon: "error", title: "Oops", text: "Enter a valid email address" });
       return;
     } 
-    else if (phone.length < 10) {
-      Swal.fire({ icon: "error", title: "Oops", text: "number requires a minimum of 10  digits" });
+    else if (!phoneRegex) {
+      Swal.fire({ icon: "error", title: "Oops", text: "Enter valid 10  digits number" });
       return;
     }
     else {
       Swal.fire({ icon: "success", title: "wow", text: "submit successfully..." })
 
     }
+
 
     axios.post(
       'https://sam-crud.onrender.com/api/create',
@@ -46,28 +48,16 @@ function Create() {
         phone: phone,
       }
     ).then(() => {
-      // alert("submit success")
-      // location.reload();
+    
       navigate("/read");
     });
 
 
   }
-  // const handleemail = (e) => {
-  //   let value = e.target.value;
-  
-  //   setEmail(value)
-
-  //   const isValidemail = /^\d{10}$/g.test(value);
-  //   setisValid(isValidemail)
-  // }
   return (
     <div>
-
       <div className='home-btn d-flex justify-content-between m-3'>
-
-
-        <div >
+      <div >
           <Link to="/read">
             <button className='btn btn-warning mx-3'>Read Data</button>
           </Link>
