@@ -30,7 +30,7 @@ function Signup() {
     } else if (email.length < 14 || !emailRegex) {
       toast.error("Enter a valid email address or use @gmail.com");
       return;
-    }32
+    }
     else if (password.length < 5 ) {
       toast.error("Password requires a minimum of 5 characters");
       return;
