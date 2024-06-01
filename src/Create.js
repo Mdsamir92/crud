@@ -26,7 +26,7 @@ function Create() {
     } else if (name.length < 3) {
       Swal.fire({ icon: "error", title: "Oops", text: "Name requires a minimum of 3 characters" });
       return;
-    } else if (email.length < 15 || !emailRegex) {
+    } else if (email.length < 14 || !emailRegex) {
       Swal.fire({ icon: "error", title: "Oops", text: "Enter a valid email address" });
       return;
     } 
