@@ -20,24 +20,19 @@ function Read() {
 
   const getData = async () => {
     try {
-  
       let res = await fetch("https://sam-crud.onrender.com/api/read");
       res = await res.json();
-      setData(res.data)
-      setLoading(false)
-    
+      setData(res.data);
+      setLoading(false);
 
     } catch (error) {
       console.log(error)
     }
-
+    
   }
 
-
 useEffect(()=>{
-
   getData();
-
 },[])
 
 
@@ -71,13 +66,11 @@ useEffect(() => {
  if(token===null){
    navigate("/")
  }
-
 },[]);
 
 
   return (
     <div>
-      
       {/* Darkmode */}
       <div className='for-check form-switch m-3'>
         <input className='form-check-input' type="checkbox"
@@ -90,7 +83,6 @@ useEffect(() => {
 
       </div>
 
-     
       <div className='create mb-3 mx-4' >
        
          {/* for logout  */}
@@ -101,7 +93,6 @@ useEffect(() => {
           </Link>
 
         </div>
-
 
       <div className='d-flex justify-content-between  mx-4'>
    
@@ -129,8 +120,6 @@ useEffect(() => {
             </tr>
           </thead>
         
-
-         
           {/* for search name email and number */}
 
           {data.filter((el) => {
