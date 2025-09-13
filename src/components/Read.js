@@ -1,167 +1,162 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react'
-import { Link,useNavigate } from 'react-router-dom';
-import Welcome from '../Welcome';
-import { toast } from "react-toastify"
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Welcome from "../Welcome";
+import { toast } from "react-toastify";
 import Loading from "./Loading";
 
-
-
-
 function Read() {
-
-  const [data, setData] = useState([]); // for display and read our data
-  const [input, setInput] = useState(""); //for search name
-  const [tabledark, setTabledark] = useState(); //for dark mode
-   const [loading,setLoading] = useState(true)// for loading api
-  
+  const [data, setData] = useState([]);
+  const [input, setInput] = useState("");
+  const [tabledark, setTabledark] = useState("");
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
+
+  
   const getData = async () => {
     try {
-      let res = await fetch("https://sam-crud.onrender.com/api/read");
-      res = await res.json();
-      setData(res.data);
+      const res = await axios.get("https://sam-crud.onrender.com/api/read");
+      setData(res.data.data); // because your API returns { data: [...] }
       setLoading(false);
-
     } catch (error) {
-      console.log(error)
+      console.error("Error fetching data:", error);
+      setLoading(false);
     }
-    
-  }
+  };
 
-useEffect(()=>{
-  getData();
-},[])
-
-
+  useEffect(() => {
+    getData();
+  }, []);
 
   function handleDelete(id) {
-    axios.delete(`https://sam-crud.onrender.com/api/delete/${id}`)
-      .then(() => {
-        toast.success("Delete successfully...")
-        getData();
-      });
+    axios.delete(`https://sam-crud.onrender.com/api/delete/${id}`).then(() => {
+      toast.success("Deleted successfully ✅");
+      getData();
+    });
   }
 
-  // set user in local storage 
-  const setToLocalStorage = ( name, email, phone) => {
-
-    localStorage.setItem("name", name)
-    localStorage.setItem("email", email)
-    localStorage.setItem("phone", phone)
-
-  }
+  const setToLocalStorage = (name, email, phone) => {
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("phone", phone);
+  };
 
   const inputHandler = (e) => {
     setInput(e.target.value.toLowerCase());
-  }
+  };
 
-//token
-const token =  localStorage.getItem("token");
-console.log(token);
+  const token = localStorage.getItem("token");
 
-useEffect(() => {
- if(token===null){
-   navigate("/")
- }
-},[]);
-
+  useEffect(() => {
+    if (token === null) {
+      navigate("/");
+    }
+  }, []);
 
   return (
-    <div>
-      {/* Darkmode */}
-      <div className='for-check form-switch m-3'>
-        <input className='form-check-input' type="checkbox"
-          onClick={() => {
-            if (tabledark === 'table-dark') setTabledark("")
-            else setTabledark("table-dark")
-
-          }}
-        />
-
-      </div>
-
-      <div className='create mb-3 mx-4' >
-       
-         {/* for logout  */}
-          <span><Welcome/></span>
-    
-          <Link to="/home">
-          <button style={{background:"black",color:"white",position:"absolute",top:"14%",left:"75%"}} className='btn '>Create</button> 
-          </Link>
-
+    <div className="container mt-4">
+      {/* Top Bar */}
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <div className="d-flex align-items-center gap-3">
+          <Welcome />
+          {/* <div className="form-check form-switch">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              onClick={() =>
+                setTabledark(tabledark === "table-dark" ? "" : "table-dark")
+              }
+            />
+            <label className="form-check-label ms-2">Dark Mode</label>
+          </div> */}
         </div>
 
-      <div className='d-flex justify-content-between  mx-4'>
-   
-        <h4>Read Data  </h4>
-        <input  style={{width:"30%",position:"absolute",top:"13%",left:"38%"}} type="search" onChange={inputHandler
-        }
-        placeholder="Search ..."   />
-        
+        <div className="d-flex align-items-center gap-3">
+          <input
+            type="search"
+            className="form-control"
+            style={{ width: "250px" }}
+            placeholder="🔍 Search..."
+            onChange={inputHandler}
+          />
+          <Link to="/home">
+            <button className="btn btn-success mb-4 fw-bold">+ Create</button>
+          </Link>
+        </div>
       </div>
 
-           <div className=' text-center m-3'>
+      {/* Loading */}
+      {loading ? (
+        <div className="text-center mt-5">
           <Loading show={loading} />
+        </div>
+      ) : (
+        <div className="card shadow-lg rounded-3 p-3">
+          <h4 className="mb-3">📋 User Records</h4>
+
+          <div className="table-responsive">
+            <table
+              className={`table table-hover table-striped align-middle ${tabledark}`}
+            >
+              <thead className="table-primary">
+                <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Number</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+                {data
+                  .filter((el) => {
+                    if (input === "") return el;
+                    return (
+                      el.name.toLowerCase().includes(input) ||
+                      el.email.toLowerCase().includes(input) ||
+                      el.phone.includes(input)
+                    );
+                  })
+                  .map((eachData, i) => (
+                    <tr key={i}>
+                      <td>{eachData.name}</td>
+                      <td>{eachData.email}</td>
+                      <td>{eachData.phone}</td>
+                      <td>
+                        <Link to={`/update/${eachData._id}`}>
+                          <button
+                            className="btn btn-sm btn-outline-primary"
+                            onClick={() =>
+                              setToLocalStorage(
+                                eachData.name,
+                                eachData.email,
+                                eachData.phone
+                              )
+                            }
+                          >
+                            ✏ Edit
+                          </button>
+                        </Link>
+                      </td>
+                      <td>
+                        <button
+                          className="btn btn-sm btn-outline-danger"
+                          onClick={() => handleDelete(eachData._id)}
+                        >
+                          🗑 Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
           </div>
-
-      <div className=' col-md-10 col-8 mx-3 '>
-        <table className={`table ${tabledark}`} >
-          <thead>
-            <tr>
-              {/* <th scope="col">#</th> */}
-              <th scope="col"> Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Number</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-        
-          {/* for search name email and number */}
-
-          {data.filter((el) => {
-            if (el === "") {
-              return el;
-            }
-            else {
-              return (el.name.toLowerCase().includes(input)) ||
-                (el.email.toLowerCase().includes(input)) || (el.phone.includes(input))
-            }
-          }).map((eachData, i) => {
-            return (
-              <>
-                <tbody>
-                  <tr key={i}>
-                    {/* <td>{eachData._id}</td> */}
-                    <td>{eachData.name}</td>
-                    <td>{eachData.email}</td>
-                    <td>{eachData.phone}</td>
-
-                    <td>
-                      <Link to={`/update/${eachData._id}`}>
-                      <button className='btn btn-primary'  
-                      onClick={() => setToLocalStorage ( eachData.name, eachData.email, eachData.phone)} >🖊</button>
-                      </Link>
-                    </td>
-
-                    <td>
-                      <button className='btn btn-warning' onClick={() => handleDelete(eachData._id)}>🗑</button>
-                    </td>
-
-                  </tr>
-                </tbody>
-              </>
-            )
-        })
-          }
-        </table>
-      </div>
-
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
 export default Read;
